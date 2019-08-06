@@ -1,0 +1,24 @@
+Tim
+50
+100000
+Humanoid
+Filler
+1
+Beholder
+13
+10000
+Aberration
+Monster Manual
+28
+Giant Crab
+1/8
+25
+Beast
+Monster Manual
+324
+Poisonous Snake
+1/8
+25
+Beast
+Monster Manual
+334
