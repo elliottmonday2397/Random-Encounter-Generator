@@ -91,13 +91,50 @@ int main(int argc, const char *argv[])
 	{
 		int num_party_members;
 		int character_level;
+		char difficulty;
+		int encounter_max_xp;
 	
-		cout << "Enter number of party members: " << endl;
+		cout << "Enter number of party members: ";
 		cin >> num_party_members;
-		cout << "Enter the level of the party (1-10): " << endl;
-		cin >> character_level;
+		cout << endl;
 		
-		int encounter_max_xp = encounter->getEncounterEasy(num_party_members, character_level - 1);
+		cout << "Enter the level of the party (1-10): ";
+		cin >> character_level;
+		cout << endl;
+		
+		bool accepted = false;
+		while(accepted == false)
+		{
+			cout << "Enter the difficulty of the encounter, (E)asy, (M)edium, (H)ard, (D)eadly: ";
+			cin >> difficulty;
+			cout << endl;
+			
+			if((difficulty == 'e') || (difficulty == 'E'))
+			{
+				encounter_max_xp = encounter->getEncounterXP(0, num_party_members, character_level - 1);
+				accepted = true;
+			}
+			else if((difficulty == 'm') || (difficulty == 'M'))
+			{
+				encounter_max_xp = encounter->getEncounterXP(1, num_party_members, character_level - 1);
+				accepted = true;
+			}
+			else if((difficulty == 'h') || (difficulty == 'H'))
+			{
+				encounter_max_xp = encounter->getEncounterXP(2, num_party_members, character_level - 1);
+				accepted = true;
+			}
+			else if((difficulty == 'd') || (difficulty == 'D'))
+			{
+				encounter_max_xp = encounter->getEncounterXP(3, num_party_members, character_level - 1);
+				accepted = true;
+			}
+			else
+			{
+				cout << "Invalid selection. Try again." << endl;
+				break;
+			}
+		}
 		
 		encounter->findAppropriateEnemies(enemies, encounter_max_xp);
 		

@@ -19,6 +19,9 @@ class Encounter
 		int total_xp;
 		
 		int encounter_easy[10]; //Array that holds the experience point value for encounters for levels 1 - 10 for easy encounters.
+		int encounter_medium[10]; //Array for experience for medium encounters.
+		int encounter_hard[10]; //Array for experience for hard encounters.
+		int encounter_deadly[10]; //Array for experience for deadly encounters.
 		
 		/*
 		Input: None.
@@ -55,6 +58,27 @@ class Encounter
 		*/
 		void createEncounterEasy();
 		
+		/*
+		Input: None.
+		Output: None.
+		Result: Initializes the medium encounter array of experience point values.
+		*/
+		void createEncounterMedium();
+		
+		/*
+		Input: None.
+		Output: None.
+		Result: Initializes the hard encounter array of experience point values.
+		*/
+		void createEncounterHard();
+		
+		/*
+		Input: None.
+		Output: None.
+		Result: Initializes the deadly encounter array of experience point values.
+		*/
+		void createEncounterDeadly();
+		
 	public:
 		Encounter();
 		~Encounter();
@@ -84,7 +108,7 @@ class Encounter
 		Output: Integer.
 		Result: Returns the total amount of experience points for the combat.
 		*/
-		int getEncounterEasy(int num_char, int index);
+		int getEncounterXP(int dif, int num_char, int index);
 		
 		/*
 		Input: Enemy object.
