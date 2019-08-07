@@ -86,45 +86,72 @@ int main(int argc, const char *argv[])
 	
 	Encounter* encounter = new Encounter();
 	
-	int num_party_members = 2;
-	int character_level = 3;
-	
-	int encounter_max_xp = encounter->getEncounterEasy(num_party_members, character_level - 1);
-	
-	encounter->findAppropriateEnemies(enemies, encounter_max_xp);
-	
-	int size_of_possible = encounter->sizeOfPossibleEnemies();
-	
-	srand(time(NULL));
-	
-	for(size_t i = 0; i < size_of_possible; i++) //the larger the pool the more times it runs, currently is limited, to thoroughly test increase to a insanely large number to show it will cut off when it is supposed to.
+	bool make_another_encounter = true;
+	while(make_another_encounter == true)
 	{
-		int random_num = rand() % size_of_possible;
-		Enemy* e = encounter->getPossibleEnemy(random_num);
+		int num_party_members;
+		int character_level;
+	
+		cout << "Enter number of party members: " << endl;
+		cin >> num_party_members;
+		cout << "Enter the level of the party (1-10): " << endl;
+		cin >> character_level;
 		
-		int temp_xp = e->getExperience();
+		int encounter_max_xp = encounter->getEncounterEasy(num_party_members, character_level - 1);
 		
-		if(encounter_max_xp < temp_xp)
-			break;
+		encounter->findAppropriateEnemies(enemies, encounter_max_xp);
 		
-		encounter->addEnemy(e);
-		encounter_max_xp -= temp_xp;
+		int size_of_possible = encounter->sizeOfPossibleEnemies();
+		
+		srand(time(NULL));
+		
+		for(size_t i = 0; i < size_of_possible; i++) //the larger the pool the more times it runs, currently is limited, to thoroughly test increase to a insanely large number to show it will cut off when it is supposed to.
+		{
+			int random_num = rand() % size_of_possible;
+			Enemy* e = encounter->getPossibleEnemy(random_num);
+			
+			int temp_xp = e->getExperience();
+			
+			if(encounter_max_xp < temp_xp)
+				break;
+			
+			encounter->addEnemy(e);
+			encounter_max_xp -= temp_xp;
+		}
+		
+		cout << "Enemies for the encounter: " << endl;
+		
+		for(size_t i = 0; i < encounter->getNumEnemies(); i++)
+		{
+			Enemy* enc_test = encounter->getEnemy(i);
+			
+			string enc_entered_name = enc_test->getEnemyName();
+			
+			cout << enc_entered_name << endl;
+		}
+		
+		int enc_total_xp = encounter->getTotalXP();
+		int enc_num_enemies = encounter->getNumEnemies();
+		cout << endl << "Encounter total xp: " << enc_total_xp << endl << "Total number of enemies: " << enc_num_enemies << endl;
+		
+		char cont;
+		cout << "Would you like to make another encounter? (Y)es or (N)o: " << endl;
+		cin >> cont;
+		
+		if((cont == 'y') || (cont == 'Y'))
+		{
+			make_another_encounter = true;
+			encounter->clearAllEnemies();
+		}
+		else if((cont == 'n') || (cont == 'N'))
+		{
+			make_another_encounter = false;
+		}
+		else
+		{
+			cout << "Invalid input. Try again." << endl;
+		}
 	}
-	
-	cout << "Enemies for the encounter: " << endl;
-	
-	for(size_t i = 0; i < encounter->getNumEnemies(); i++)
-	{
-		Enemy* enc_test = encounter->getEnemy(i);
-		
-		string enc_entered_name = enc_test->getEnemyName();
-		
-		cout << enc_entered_name << endl;
-	}
-	
-	int enc_total_xp = encounter->getTotalXP();
-	int enc_num_enemies = encounter->getNumEnemies();
-	cout << endl << "Encounter total xp: " << enc_total_xp << endl << "Total number of enemies: " << enc_num_enemies << endl;
 	
 	return 0;
 }

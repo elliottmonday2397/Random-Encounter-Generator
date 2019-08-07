@@ -26,12 +26,27 @@ class Encounter
 		Result: Adds enemies to the enc_enemies.
 		*/
 		void addNumEnemies();
+		
+		/*
+		Input: None.
+		Output: None.
+		Result: Zeroes num_enemies.
+		*/
+		void resetNumEnemies();
+		
 		/*
 		Input: Integer.
 		Output: None.
 		Result: Adds the amount for the creature to the total experience of the encounter.
 		*/
 		void addTotalXP(int x);
+		
+		/*
+		Input: None.
+		Output: None.
+		Result: Zeroes total_xp.
+		*/
+		void resetXP();
 		
 		/*
 		Input: None.
@@ -110,6 +125,13 @@ class Encounter
 		Result: Returns the size of the vector of possible enemies.
 		*/
 		int sizeOfPossibleEnemies();
+		
+		/*
+		Input: None.
+		Output: None.
+		Result: Clears the vector of enemies for reuse.
+		*/
+		void clearAllEnemies();
 };
 
 #endif

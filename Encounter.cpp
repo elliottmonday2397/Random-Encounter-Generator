@@ -12,6 +12,8 @@ Encounter::Encounter()
 
 Encounter::~Encounter()
 {
+	enc_enemies.clear();
+	possible_enc_enemies.clear();
 	delete encounter;
 }
 
@@ -25,6 +27,11 @@ int Encounter::getNumEnemies()
 	return num_enemies;
 }
 
+void Encounter::resetNumEnemies()
+{
+	num_enemies = 0;
+}
+
 void Encounter::addTotalXP(int x)
 {
 	total_xp += x;
@@ -33,6 +40,11 @@ void Encounter::addTotalXP(int x)
 int Encounter::getTotalXP()
 {
 	return total_xp;
+}
+
+void Encounter::resetXP()
+{
+	total_xp = 0;
 }
 
 void Encounter::createEncounterEasy()
@@ -100,6 +112,14 @@ void Encounter::findAppropriateEnemies(vector<Enemy*> &e, int m_x_p)
 }
 
 int Encounter::sizeOfPossibleEnemies()
-	{
-		return possible_enc_enemies.size();
-	}
+{
+	return possible_enc_enemies.size();
+}
+
+void Encounter::clearAllEnemies()
+{
+	enc_enemies.clear();
+	possible_enc_enemies.clear();
+	resetNumEnemies();
+	resetXP();
+}
