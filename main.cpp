@@ -68,8 +68,9 @@ int main(int argc, const char *argv[])
 	
 	readEntries(enemies, argv[1]);
 	
-	for(size_t i = 0; i < enemies.size(); i++)
+	/* for(size_t i = 0; i < enemies.size(); i++)
 	{		
+
 		Enemy* enemy = enemies[i];
 		
 		string entered_name = enemy->getEnemyName();
@@ -80,9 +81,7 @@ int main(int argc, const char *argv[])
 		string entered_ref_page = enemy->getReferencePage();
 		
 		cout << entered_name << " " << entered_cr << " " << entered_xp << " " << entered_ref_book << endl;
-	}
-	
-	cout << endl << endl;
+	} */
 	
 	Encounter* encounter = new Encounter();
 	
@@ -132,7 +131,6 @@ int main(int argc, const char *argv[])
 			else
 			{
 				cout << "Invalid selection. Try again." << endl;
-				break;
 			}
 		}
 		

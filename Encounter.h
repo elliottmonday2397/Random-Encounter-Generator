@@ -79,6 +79,13 @@ class Encounter
 		*/
 		void createEncounterDeadly();
 		
+		/*
+		Input: Enemy object.
+		Output: None.
+		Result: Adds an enemy to the list of possible enemies for the encounter.
+		*/
+		void addPossibleEnemy(Enemy* e);
+		
 	public:
 		Encounter();
 		~Encounter();
@@ -111,12 +118,6 @@ class Encounter
 		int getEncounterXP(int dif, int num_char, int index);
 		
 		/*
-		Input: Enemy object.
-		Output: None.
-		Result: Adds an enemy to the list of possible enemies for the encounter.
-		*/
-		void addPossibleEnemy(Enemy* e);
-		/*
 		Input: Integer for an index location.
 		Output: Enemy object.
 		Result: Returns and enemy from the list of possible enemies.
@@ -129,6 +130,7 @@ class Encounter
 		Result: Adds an enemy to the actual encounter.
 		*/
 		void addEnemy(Enemy* e);
+		
 		/*
 		Input: Integer for an index location.
 		Output: Enemy object.
