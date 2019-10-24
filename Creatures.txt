@@ -22,3 +22,15 @@ Poisonous Snake
 Beast
 Monster Manual
 334
+EricHooks
+1/10
+1
+Humanoid
+Filler
+1
+DukeyBoi
+10000
+1000000
+EldritchHorror
+Filler
+3
